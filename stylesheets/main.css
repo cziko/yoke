@@ -19,6 +19,10 @@ ul{font-size:16px; line-height:24px;}
 .clear  {clear:both;}
 .left  {float:left;}
 
+h1 span:hover{
+  background-color: #A6C7F0;
+}
+
 .code{
   float: left;
   padding: 15px 20px;
