@@ -16,6 +16,12 @@ h4{font-size:20px;}
 p{font-size:16px; line-height:24px;}
 ul{font-size:16px; line-height:24px;}
 
+#hacked_by{
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
 .clear  {clear:both;}
 .left  {float:left;}
 
