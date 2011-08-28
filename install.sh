@@ -10,16 +10,24 @@ fi
 echo "-$1-"
 case $install_what in 
 	[pP] | -p | --python )
-		echo 'cp -r -v Services/"Execute as Python code.workflow" ~/Library/Services/'
-		#cp -r -v Services/"Execute as Python code.workflow" ~/Library/Services/
+		#echo 'cp -r -v Services/"Execute as Python code.workflow" ~/Library/Services/'
+		echo "Installing python service:"
+		cp -r -v Services/"Execute as Python code.workflow" ~/Library/Services/
+		echo "Done. You will need to assign a shortcut in:"
+		echo "System Preferences... -> Keyboard -> Keyboard Shortcuts -> Services -> Text"
 		;;
 	[rR] | -r | --ruby )
-		echo "cp -r -v Services/ExecuteRubyInlineV3.workflow ~/Library/Services/"
-		#cp -r -v Services/ExecuteRubyInlineV3.workflow ~/Library/Services/
+		echo "Installing ruby service:"
+		#echo "cp -r -v Services/ExecuteRubyInlineV3.workflow ~/Library/Services/"
+		cp -r -v Services/ExecuteRubyInlineV3.workflow ~/Library/Services/
+		echo "Done. Shortcut is Command + > or Command + Shift + ."
 		;;
 	[aA] | -a | --all )
-		echo "cp -r -v Services/* ~/Library/Services/"
-		#cp -r -v Services/* ~/Library/Services/
+		echo "Installing all services:"
+		#echo "cp -r -v Services/* ~/Library/Services/"
+		cp -r -v Services/* ~/Library/Services/
+		echo "Done. You will need to assign a shortcuts in:"
+		echo "System Preferences... -> Keyboard -> Keyboard Shortcuts -> Services -> Text"
 		;;
 	*)
 		[[ -n $install_what ]] && echo "I don't know how to handle $install_what."
