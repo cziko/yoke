@@ -1,2 +1,2 @@
 #!/bin/sh
-cp -r Services/* ~/Library/Services/
+cp -r -v Services/* ~/Library/Services/
