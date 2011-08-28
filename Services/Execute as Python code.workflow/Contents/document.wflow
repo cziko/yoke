@@ -59,12 +59,17 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>echo "$@"
-python -c "try: 
-$@
-except Exception as e: print('Error:%s' % e)" 2&gt;&amp;1
-exit 0
-</string>
+					<string>indented_py=$(echo -ne "$*" | sed '/^/ s//  /g')
+py=$( cat &lt;&lt;PY
+try:
+$indented_py
+except Exception as e: print('Error: %s' % e)
+PY
+)
+
+python -c "$py" 2&gt;&amp;1
+
+exit 0</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
