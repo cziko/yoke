@@ -9,6 +9,20 @@ else
 fi
 echo "-$1-"
 case $install_what in 
+	[bB] | --bash )
+		#echo 'cp -r -v Services/"Execute as Python code.workflow" ~/Library/Services/'
+		echo "Installing (restricted) bash service:"
+		cp -r -v Services/"Execute as shell script.workflow" ~/Library/Services/
+		echo "Done. You will need to assign a shortcut in:"
+		echo "System Preferences... -> Keyboard -> Keyboard Shortcuts -> Services -> Text"
+		;;
+	[eE] | --perl )
+		#echo 'cp -r -v Services/"Execute as Python code.workflow" ~/Library/Services/'
+		echo "Installing perl service:"
+		cp -r -v Services/"Execute as Perl code.workflow" ~/Library/Services/
+		echo "Done. You will need to assign a shortcut in:"
+		echo "System Preferences... -> Keyboard -> Keyboard Shortcuts -> Services -> Text"
+		;;
 	[hH] | --php )
 		#echo 'cp -r -v Services/"Execute as Python code.workflow" ~/Library/Services/'
 		echo "Installing PHP service:"
