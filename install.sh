@@ -4,7 +4,7 @@ if [ -n "$1" ] ; then
 	install_what=$1
 else
 	echo "Choose the version of Yoke to install:"
-	read -p "PHP, Python, Ruby, All, Bash [hyRab]? " install_choice
+	read -p "PHP, Python, Ruby, Bash, All [hyRba]? " install_choice
 	install_what=${install_choice:-R}
 fi
 echo "-$1-"
