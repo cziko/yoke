@@ -8,6 +8,12 @@ else
 	install_what=${install_choice:-R}
 fi
 echo "-$1-"
+
+if [ ! -d ~/Library/Services ]; then
+    echo "~/Library/Services does not exist creating"
+    mkdir -p -v ~/Library/Services
+fi
+
 case $install_what in 
 	[bB] | --bash )
 		#echo 'cp -r -v Services/"Execute as Python code.workflow" ~/Library/Services/'
