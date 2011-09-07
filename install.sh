@@ -4,7 +4,7 @@ if [ -n "$1" ] ; then
 	install_what=$1
 else
 	echo "Choose the version of Yoke to install:"
-	read -p "PHP, Python, Ruby, Bash, All [hyRba]? " install_choice
+	read -p "PHP, Python, Ruby, Bash, Node.js, All [hyRbna]? " install_choice
 	install_what=${install_choice:-R}
 fi
 echo "-$1-"
@@ -48,6 +48,25 @@ case $install_what in
 		#echo "cp -r -v Services/ExecuteRubyInlineV3.workflow ~/Library/Services/"
 		cp -r -v Services/ExecuteRubyInlineV3.workflow ~/Library/Services/
 		echo "Done. Shortcut is Command + > or Command + Shift + ."
+		;;
+	[nN] | --node )
+		echo "Installing node.js service:"
+		# test for node version number - we need 0.5 or later
+		NODE_LOC=$(which node)
+		if [ -z "$NODE_LOC" ] ; then
+			echo "FAILED: Couldn't find node in your path."
+		else
+			verok=$(node -v | awk -Fv '{print $NF}' | awk -F. '{ if ($1 >= 0 && $2 >= 5) print "OK" }')
+			if [ "$verok" == "OK" ] ; then
+				cp -r -v Services/"Execute as NodeJS code.workflow" ~/Library/Services/
+				echo "s#NODE_LOC=node#NODE_LOC=$NODE_LOC#"
+				sed -i -e "s#NODE_LOC=node#NODE_LOC=$NODE_LOC#" ~/Library/Services/"Execute as NodeJS code.workflow"/Contents/document.wflow
+				echo "Done. You will need to assign a shortcut in:"
+				echo "System Preferences... -> Keyboard -> Keyboard Shortcuts -> Services -> Text"
+			else 
+				echo "FAILED: need at least v0.5. You have `node -v`."
+			fi
+		fi
 		;;
 	[aA] | -a | --all )
 		echo "Installing all services:"
